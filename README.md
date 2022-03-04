@@ -15,7 +15,7 @@ Sample programs that interoperate between Notion and Google ToDo (Google Tasks).
 |  Name  |  Type  | Example | Explanation |
 | ---- | ---- | ---- | ---- |
 |  notionToken  |  string  | "secret_oxoxoxox" | Notion token |
-|  notionDbId  |  string  | "0305a36b11c04727b321171e152e85b5" | Notion database ID https://www.notion.so/0305a36b11c04727b321171e152e85b5?v=3bbaab8907704661a3a32be257be74c4|
+|  notionDbId  |  string  | "0305a36b11c04727b321171e152e85b5" | Notion database ID(Ex:Relation of DbId and notion page url https://www.notion.so/0305a36b11c04727b321171e152e85b5?v=3bbaab8907704661a3a32be257be74c4)|
 |  taskListId  |  string  | "KWssdfnntDt3JKJNgfdoxoxoxox" | Google task list ID |
 |  calendarId  |  string  | "oxoxoxox@gmail.com" | Google Calendar ID |
 |  nameProp  |  string  | "Title" | Notion database task 'title' column name |
