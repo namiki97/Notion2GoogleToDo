@@ -22,6 +22,7 @@ Sample programs that interoperate between Notion and Google ToDo (Google Tasks).
 |  dateProp  |  string  | "Date" | Notion database 'task due' column name |
 |  taskIdProp  |  string  | "taskId" | Notion database  'Google task ID' column name |
 |  doneStatusProp  |  string  | "Done" | Notion database 'Commpleted status' column name |
+|  notesProp  |  string  | "Google tasks notes" | Notion database 'Google tasks notes' column name |
 |  daysForSearch  |  int  | 31 | How many days to look for deadlines from today. |
 |  isLogging  |  Boolean  | true | Whether to keep a log or not |
 |  staySecond  |  int  | 0 | Wait second when API request |
