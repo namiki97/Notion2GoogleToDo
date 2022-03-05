@@ -3,7 +3,7 @@
 function initUserProperties() {
   const properties = PropertiesService.getUserProperties();
   properties.setProperties({
-    // "notionToken" : "",//Notion token // !!!SET HERE !!!
+    "notionToken" : "",//Notion token // !!!SET HERE !!!
     "notionDbId" : "",//Notion database ID // !!!SET HERE !!!
     "taskListId":"",//Google task list ID // !!!SET HERE !!!
     "calendarId": "",//Google Calendar ID // !!!SET HERE !!!
