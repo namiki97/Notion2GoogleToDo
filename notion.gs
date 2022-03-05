@@ -426,7 +426,7 @@ class InfoNotion{
       const newNotionNotes = textWithoutUrl;
       this.sendTaskNotesToNotion(task,pageId,newNotionNotes);//update notion notes
       if (this.isLogging){
-        if(textWithoutUrl.includes("\n")){
+        if(textWithoutUrl && .includes("\n")){
           textWithoutUrl = textWithoutUrl.replace(/\n/,"");//Remove the first line break.
         };
         console.log(
@@ -462,7 +462,7 @@ class InfoNotion{
       const newNotes = notionNotes + "\n" + notionPage.url;
       this.infoTask.setNotes(task,newNotes);//Update google notes
       if (this.isLogging){
-        if(textWithoutUrl.includes("\n")){
+        if(textWithoutUrl && textWithoutUrl.includes("\n")){
           textWithoutUrl = textWithoutUrl.replace(/\n/,"");//Remove the first line break.
         };
         console.log(
