@@ -70,7 +70,10 @@ class InfoNotion{
     const title = props[this.nameProp].title[0].plain_text;
     // const notes = this.notionPrefix + pageId;//Put a Notion page link in the task details.
     const notionNotes = this.getRichText(props[this.notesProp]);
-    const notes = this.notionPrefix + pageId + "\n" + notionNotes;//notesPropnotes with notion page link in task details
+    let notes = this.notionPrefix + pageId ;//notion notesProps
+    if(notionNotes != "" ){
+      notes = notes + "\n" + notionNotes;//if notes are setted in notion notes
+      };
     const dueStr = this.infoTask.getDueStr(props[this.dateProp].date.start);
 
     const task = this.infoTask.addTask(title,notes,dueStr);// Add new task
@@ -419,14 +422,16 @@ class InfoNotion{
   // Compare the contents of Google notes with the contents of notion's notes and give priority to google notes.
   checkNotesGoogleTaskPriority(props, task,pageId){
     const notionPage = this.checkNotionTaskId(task.id);// find taskId and corresponding notion (return json or false)
-    const notionNotes =this.getRichText(props[this.notesProp]);
+    let notionNotes =this.getRichText(props[this.notesProp]);
     let textWithoutUrl = this.extractText(task,notionPage.url);
+    if(textWithoutUrl == null){textWithoutUrl = ""};
+    if(notionNotes == null){notionNotes = ""};
 
     if(notionNotes != textWithoutUrl){
       const newNotionNotes = textWithoutUrl;
       this.sendTaskNotesToNotion(task,pageId,newNotionNotes);//update notion notes
       if (this.isLogging){
-        if(textWithoutUrl.includes("\n")){
+        if(textWithoutUrl && .includes("\n")){
           textWithoutUrl = textWithoutUrl.replace(/\n/,"");//Remove the first line break.
         };
         console.log(
@@ -462,7 +467,7 @@ class InfoNotion{
       const newNotes = notionNotes + "\n" + notionPage.url;
       this.infoTask.setNotes(task,newNotes);//Update google notes
       if (this.isLogging){
-        if(textWithoutUrl.includes("\n")){
+        if(textWithoutUrl && textWithoutUrl.includes("\n")){
           textWithoutUrl = textWithoutUrl.replace(/\n/,"");//Remove the first line break.
         };
         console.log(
@@ -479,12 +484,14 @@ class InfoNotion{
   // Separate the contents of google tasks' notes into pageUrl and text.
   // Extract only the url portion from the text and return
   extractText(task, exclusionWords){
-    if(task.notes){//Notes is not blank.
-      if(task.notes.includes(exclusionWords)){//Include notionPageUrl in notes
-        const regExp = new RegExp(exclusionWords,"g")//https://lab.syncer.jp/Web/JavaScript/Snippet/4/
-        const textWithoutExclusionWords = task.notes.replace(regExp,"");
+    if(task.notes && task.notes.includes(exclusionWords)){//Include notionPageUrl in notes
+      const regExp = new RegExp(exclusionWords,"g")//https://lab.syncer.jp/Web/JavaScript/Snippet/4/
+      const textWithoutExclusionWords = task.notes.replace(regExp,"");
+      if(textWithoutExclusionWords == null){
+        return "";
+      }else{
         return textWithoutExclusionWords;
-      }
+      };
     }else{//notes is blank=>return ""
       return "";
     };
