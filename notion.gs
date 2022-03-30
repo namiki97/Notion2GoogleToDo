@@ -431,7 +431,7 @@ class InfoNotion{
       const newNotionNotes = textWithoutUrl;
       this.sendTaskNotesToNotion(task,pageId,newNotionNotes);//update notion notes
       if (this.isLogging){
-        if(textWithoutUrl && .includes("\n")){
+        if(textWithoutUrl && textWithoutUrl.includes("\n")){
           textWithoutUrl = textWithoutUrl.replace(/\n/,"");//Remove the first line break.
         };
         console.log(
