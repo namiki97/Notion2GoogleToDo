@@ -16,7 +16,7 @@ function initUserProperties() {
     "daysForSearch" : 31,//Search only for tasks within x days before and after the time of execution
     "isLogging" : true,//Whether to keep a log or not
     "staySecond":0,//Number of seconds to wait to avoid request limitation during POST on notion page
-    "notionVersion":"2021-08-16",
+    "notionVersion":"2022-02-22",// 旧 2021-08-16
     "notionLastUpdatePeriod":15,//(minutes) If the notion page is updated within fat minutes, it will be reflected in the Google task.
     "googleLastUpdatePeriod":1000//(seconds) Only Google tasks that are updated within ◯ seconds are reflected in the notion task.
   });
